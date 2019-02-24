@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <h1>All our pokemons (<%= @pokemons.length %>)</h1>
+    <div class="cards">
+        <% @pokemons.each do |pokemon| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= pokemon.picture %>')">
+          <%= link_to pokemon.name, pokemon_path(pokemon) %>
+        </div>
+        <% end %>
+    </div>
+</div>

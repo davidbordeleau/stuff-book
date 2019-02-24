@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'open-uri'
+
+
+random = rand(20..30)
+
+10.times do
+url = "https://pokeapi.co/api/v2/pokemon/#{rand(20..30)}/"
+
+user_serialized = open(url).read
+user = JSON.parse(user_serialized)
+
+b = Pokemon.create(name: user['species']['name'], picture: user['sprites']['back_default'])
+b.save
+
+end
